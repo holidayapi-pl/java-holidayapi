@@ -13,7 +13,7 @@ import lombok.Setter;
         "observed",
         "public"
 })
-public class Holiday {
+public class Festivo {
 
     @JsonProperty("name")
     @Getter

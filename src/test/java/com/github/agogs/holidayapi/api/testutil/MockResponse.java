@@ -1,7 +1,7 @@
 package com.github.holidayapi.holidayapi.api.testutil;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.holidayapi.holidayapi.model.HolidayAPIResponse;
+import com.github.holidayapi.holidayapi.model.FestivoAPIResponse;
 
 import java.io.IOException;
 
@@ -22,32 +22,32 @@ public abstract class MockResponse {
     public static String RESPONSE_429 = "{\"status\":429,\"error\":\"Exceeded free quota\"}";
     public static String RESPONSE_500 = "{\"status\":500,\"error\":\"Internal server error\"}";
 
-    public static HolidayAPIResponse response200() throws IOException {
-        return mapper.readValue(RESPONSE_200, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response200() throws IOException {
+        return mapper.readValue(RESPONSE_200, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response400() throws IOException {
-        return mapper.readValue(RESPONSE_400, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response400() throws IOException {
+        return mapper.readValue(RESPONSE_400, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response401() throws IOException {
-        return mapper.readValue(RESPONSE_401, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response401() throws IOException {
+        return mapper.readValue(RESPONSE_401, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response402() throws IOException {
-        return mapper.readValue(RESPONSE_402, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response402() throws IOException {
+        return mapper.readValue(RESPONSE_402, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response403() throws IOException {
-        return mapper.readValue(RESPONSE_403, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response403() throws IOException {
+        return mapper.readValue(RESPONSE_403, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response429() throws IOException {
-        return mapper.readValue(RESPONSE_429, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response429() throws IOException {
+        return mapper.readValue(RESPONSE_429, FestivoAPIResponse.class);
     }
 
-    public static HolidayAPIResponse response500() throws IOException {
-        return mapper.readValue(RESPONSE_500, HolidayAPIResponse.class);
+    public static FestivoAPIResponse response500() throws IOException {
+        return mapper.readValue(RESPONSE_500, FestivoAPIResponse.class);
     }
 
 }

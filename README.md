@@ -1,6 +1,6 @@
 # java-holidayppi
 
-An official java client library for https://holidayapi.pl/
+An official java client library for https://getfestivo.com/
 
 **Logging**
 
@@ -25,7 +25,7 @@ You can download the pre-configured configuration file from the directory `<proj
 **Sample java code**
 ```java
         //create a consumer
-        APIConsumer consumer = new HolidayAPIConsumer("https://holidayapi.pl/v1/holidays");
+        APIConsumer consumer = new FestivoAPIConsumer("https://getfestivo.com/v1/holidays");
 
         //generate the wuery parameters
         QueryParams params = new QueryParams();
@@ -40,7 +40,7 @@ You can download the pre-configured configuration file from the directory `<proj
 
         try {
             //make the API call
-            HolidayAPIResponse response = consumer.getHolidays(params);
+            FestivoAPIResponse response = consumer.getFestivos(params);
             
             //check the status code of the API call
             int status = response.getStatus();
@@ -52,8 +52,8 @@ You can download the pre-configured configuration file from the directory `<proj
 
                 //handle success scenario
 
-                List<Holiday> holidays = response.getHolidays();
-                for (Holiday h : holidays) {
+                List<Festivo> holidays = response.getFestivos();
+                for (Festivo h : holidays) {
                     //do your thing
                 }
             }

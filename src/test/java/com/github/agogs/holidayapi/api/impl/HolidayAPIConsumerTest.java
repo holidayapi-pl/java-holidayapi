@@ -3,7 +3,7 @@ package com.github.holidayapi.holidayapi.api.impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.holidayapi.holidayapi.api.APIConsumer;
-import com.github.holidayapi.holidayapi.model.HolidayAPIResponse;
+import com.github.holidayapi.holidayapi.model.FestivoAPIResponse;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import static com.github.holidayapi.holidayapi.api.testutil.MockResponse.*;
 
 /**
- * Test the behaviour of the methods implemented in {@link HolidayAPIConsumer}.
+ * Test the behaviour of the methods implemented in {@link FestivoAPIConsumer}.
  * <p>Each test method tests for a response code of the API. The responses for the following response codes are tested.</p>
  * <ul>
  *     <li>200</li>
@@ -28,7 +28,7 @@ import static com.github.holidayapi.holidayapi.api.testutil.MockResponse.*;
  *     <li>500</li>
  * </ul>
  */
-public class HolidayAPIConsumerTest {
+public class FestivoAPIConsumerTest {
 
     @Mock
     private APIConsumer apiConsumer;
@@ -41,11 +41,11 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidays_200() throws IOException {
+    public void testGetFestivos_200() throws IOException {
 
-        Mockito.doReturn(response200()).when(apiConsumer).getHolidays(null);
+        Mockito.doReturn(response200()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 200, "Response code is NOT 200");
         Assert.assertTrue(response.getError() == null, "error message is NOT null");
@@ -53,69 +53,69 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidays_400() throws IOException {
-        Mockito.doReturn(response400()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_400() throws IOException {
+        Mockito.doReturn(response400()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 400, "Response code is NOT 400");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidays_401() throws IOException {
-        Mockito.doReturn(response401()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_401() throws IOException {
+        Mockito.doReturn(response401()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 401, "Response code is NOT 401");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidays_402() throws IOException {
-        Mockito.doReturn(response402()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_402() throws IOException {
+        Mockito.doReturn(response402()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 402, "Response code is NOT 402");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidays_403() throws IOException {
-        Mockito.doReturn(response403()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_403() throws IOException {
+        Mockito.doReturn(response403()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 403, "Response code is NOT 403");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidays_429() throws IOException {
-        Mockito.doReturn(response429()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_429() throws IOException {
+        Mockito.doReturn(response429()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 429, "Response code is NOT 429");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidays_500() throws IOException {
-        Mockito.doReturn(response500()).when(apiConsumer).getHolidays(null);
+    public void testGetFestivos_500() throws IOException {
+        Mockito.doReturn(response500()).when(apiConsumer).getFestivos(null);
 
-        HolidayAPIResponse response = apiConsumer.getHolidays(null);
+        FestivoAPIResponse response = apiConsumer.getFestivos(null);
         Assert.assertTrue(response != null, "Response is null");
         Assert.assertTrue(response.getStatus() == 500, "Response code is NOT 500");
         Assert.assertTrue(response.getError() != null, "error message IS null");
     }
 
     @Test
-    public void testGetHolidaysAsString_400() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_400);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_400() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_400);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 
@@ -125,9 +125,9 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidaysAsString_401() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_401);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_401() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_401);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 
@@ -137,9 +137,9 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidaysAsString_403() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_403);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_403() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_403);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 
@@ -149,9 +149,9 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidaysAsString_429() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_429);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_429() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_429);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 
@@ -161,9 +161,9 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidaysAsString_200() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_200);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_200() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_200);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 
@@ -173,9 +173,9 @@ public class HolidayAPIConsumerTest {
     }
 
     @Test
-    public void testGetHolidaysAsString_500() throws IOException {
-        Mockito.when(apiConsumer.getHolidaysAsString(null)).thenReturn(RESPONSE_500);
-        String response = apiConsumer.getHolidaysAsString(null);
+    public void testGetFestivosAsString_500() throws IOException {
+        Mockito.when(apiConsumer.getFestivosAsString(null)).thenReturn(RESPONSE_500);
+        String response = apiConsumer.getFestivosAsString(null);
 
         Assert.assertTrue(response != null, "Response IS null");
 

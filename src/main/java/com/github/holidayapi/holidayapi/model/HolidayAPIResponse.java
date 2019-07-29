@@ -18,7 +18,7 @@ import java.util.List;
         "error",
         "holidays"
 })
-public class HolidayAPIResponse {
+public class FestivoAPIResponse {
 
     @JsonProperty("status")
     @Getter
@@ -28,7 +28,7 @@ public class HolidayAPIResponse {
     @JsonProperty("holidays")
     @Getter
     @Setter
-    private List<Holiday> holidays;
+    private List<Festivo> holidays;
 
     @JsonProperty("error")
     @Getter
@@ -37,7 +37,7 @@ public class HolidayAPIResponse {
 
     @Override
     public String toString() {
-        return "HolidayResponse{" +
+        return "FestivoResponse{" +
                 "status=" + status +
                 ", holidays=" + holidays +
                 ", error='" + error + '\'' +

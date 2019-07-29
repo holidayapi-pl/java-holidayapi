@@ -2,7 +2,7 @@ package com.github.holidayapi.holidayapi.api.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.holidayapi.holidayapi.api.APIConsumer;
-import com.github.holidayapi.holidayapi.model.HolidayAPIResponse;
+import com.github.holidayapi.holidayapi.model.FestivoAPIResponse;
 import com.github.holidayapi.holidayapi.model.QueryParams;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,9 +19,9 @@ import java.net.URLConnection;
  *
  * @author rakesh
  */
-public class HolidayAPIConsumer implements APIConsumer {
+public class FestivoAPIConsumer implements APIConsumer {
 
-    private static final Logger log = LogManager.getLogger(HolidayAPIConsumer.class);
+    private static final Logger log = LogManager.getLogger(FestivoAPIConsumer.class);
 
     //store the base url in a variable for later use
     private String baseURl;
@@ -31,14 +31,14 @@ public class HolidayAPIConsumer implements APIConsumer {
      *
      * @param baseURl - the base url of the API
      */
-    public HolidayAPIConsumer(String baseURl) {
+    public FestivoAPIConsumer(String baseURl) {
         log.debug("instantiating with base url : {}", baseURl);
         this.baseURl = baseURl;
     }
 
     /**
-     * Call the holidays api and send back the response encapsulatd in a {@link HolidayAPIResponse} object.
-     * This is a wrapper method that depends on {@link HolidayAPIConsumer#getHolidaysAsString(QueryParams)}
+     * Call the holidays api and send back the response encapsulatd in a {@link FestivoAPIResponse} object.
+     * This is a wrapper method that depends on {@link FestivoAPIConsumer#getFestivosAsString(QueryParams)}
      * to get the json string and then map it to a java object
      *
      * @param queryParams - the params encapsulated in an object
@@ -46,12 +46,12 @@ public class HolidayAPIConsumer implements APIConsumer {
      * @throws IOException - when there are connection issues or the URL is malformed
      */
     @Override
-    public HolidayAPIResponse getHolidays(QueryParams queryParams) throws IOException {
+    public FestivoAPIResponse getFestivos(QueryParams queryParams) throws IOException {
 
         log.info("get holidays API call with query params {}", queryParams.toString());
 
         //get the response string
-        String json = getHolidaysAsString(queryParams);
+        String json = getFestivosAsString(queryParams);
 
         log.info("got json string response");
         log.debug("got json string response : {}", json);
@@ -59,11 +59,11 @@ public class HolidayAPIConsumer implements APIConsumer {
         //ObjectMapper to map the json string to a java object
         ObjectMapper mapper = new ObjectMapper();
 
-        HolidayAPIResponse response = mapper.readValue(json, HolidayAPIResponse.class);
+        FestivoAPIResponse response = mapper.readValue(json, FestivoAPIResponse.class);
 
         log.info("returning response");
         log.debug("returning response : {}", response);
-        //map and return the response encapsulated in HolidayAPIResponse object
+        //map and return the response encapsulated in FestivoAPIResponse object
         return response;
     }
 
@@ -75,7 +75,7 @@ public class HolidayAPIConsumer implements APIConsumer {
      * @throws IOException - when there are connection issues or the URL is malformed
      */
     @Override
-    public String getHolidaysAsString(QueryParams queryParams) throws IOException {
+    public String getFestivosAsString(QueryParams queryParams) throws IOException {
 
         log.info("get holidays API call with query params {}", queryParams.toString());
 
